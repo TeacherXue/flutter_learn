@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Demo2"),
+          title: Text("Demo3"),
         ),
       body: HomeContent(),
       )
@@ -18,56 +18,49 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeContent extends StatefulWidget {
+  HomeContent() {
+    print("HomeContent构造函数");
+  }
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
+    print("HomeContent creatState");
     return HomeContentState();
   }
 }
 
 class HomeContentState extends State<HomeContent> {
-  int count = 0;
 
-  @override  //初始化操作：可以在内做网络请求 初始化内容等等 类似viewdidload
+  HomeContentState() {
+    print("HomeContentState 构造函数");
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print("HomeContentState didChangeDependencies");
+  }
+
+  @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    print("HomeContentState initState");
   }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    print("HomeContentState build");
     return Center(
-        child:Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("当前计数为：$count",style: TextStyle(fontSize: 26),),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                RaisedButton(
-                  onPressed: () {
-                    setState(() {
-                      count ++;
-                    });
-                  },
-                  child: Text("+1"),
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    setState(() {
-                      count --;
-                    });
-                  },
-                  child: Text("-1"),
-                )
-              ],
-            )
-          ],
-        )
-    );;
+      child: Text("Hello World",style: TextStyle(fontSize: 30),),
+    );
+  }
+
+  @override
+  void didUpdateWidget(HomeContent oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    print("HomeContentState didUpdateWidget");
   }
 }
-
 
 
