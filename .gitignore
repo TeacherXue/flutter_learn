@@ -59,3 +59,4 @@ lib/generated_plugin_registrant.dart
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 >>>>>>> 7dec731... 初始化
+/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
