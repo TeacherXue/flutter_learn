@@ -65,16 +65,18 @@ class AccountPWDFormWidget extends StatefulWidget {
 
 class AccountPWDFormState extends State<AccountPWDFormWidget> {
 
-//  final registerFormKey = GlobalKey<FormState>();
-//  String username, password;
-//
-//  AccountPWDFormState() {
-//    registerFormKey.currentState.save();
-//  }
+  final registerFormKey = GlobalKey<FormState>();
+  String username, password;
+
+  void registerForm() {
+    registerFormKey.currentState.save();
+    print("username:$username password:$password");
+  }
 
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: registerFormKey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -84,7 +86,13 @@ class AccountPWDFormState extends State<AccountPWDFormWidget> {
                 labelText: "用户名或手机号"
             ),
             onSaved: (value) {
-              print("用户名：$value");
+              this.username = value;
+            },
+            validator: (value) {
+              if (value.isEmpty) {
+                return "账号不能为空";
+              }
+              return null;
             },
           ),
           TextFormField(
@@ -94,7 +102,13 @@ class AccountPWDFormState extends State<AccountPWDFormWidget> {
                 labelText: "密码"
             ),
             onSaved: (value) {
-              print("密码：$value");
+              this.password = value;
+            },
+            validator: (value) {
+              if (value.isEmpty) {
+                return "密码不能为空";
+              }
+              return null;
             },
           ),
           SizedBox(height: 16,),
@@ -103,10 +117,8 @@ class AccountPWDFormState extends State<AccountPWDFormWidget> {
             height: 44,
             child: RaisedButton(
               color: Colors.lightGreen,
-              child: Text("注 册", style: TextStyle(fontSize: 20, color: Colors.white),),
-              onPressed: () {
-                print("点击了注册按钮");
-              },
+              child: Text("登 录", style: TextStyle(fontSize: 20, color: Colors.white),),
+              onPressed: registerForm,
             ),
           )
         ],
