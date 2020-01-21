@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learn_flutter/models/home_model.dart';
 import 'package:learn_flutter/network/http_request.dart';
 import 'package:dio/dio.dart';
+import 'package:learn_flutter/views/home/childCpns/movie_list_item.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -50,11 +51,7 @@ class _State extends State<HomeBody> {
           itemCount: movieItems.length,
           itemBuilder: (BuildContext context, int index) {
             MovieItem movie = movieItems[index];
-            return ListTile( //ListTile 相当于cell  可以自定义
-              leading: Image.network(movie.imageURL),
-              title: Text(movie.title),
-              subtitle: Text(movie.direcotr.name)
-            );
+            return MovieListItem(movie);
           }
       )
     );
